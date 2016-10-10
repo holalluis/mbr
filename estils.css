@@ -1,0 +1,19 @@
+*{margin:0}
+h1,h2,h3{margin:0.6em}
+body{font-family:Times;background:#cff;overflow-y:scroll}
+a{text-decoration:none;font-weight:bold}
+a:visited {color:blue}
+a:hover{text-decoration:underline}
+td,th{border:1px solid #ccc}
+th{background:white}
+div{margin-top:0.3em;padding:0.5em}
+table{font-size:13px;border-collapse:collapse;margin:0.5em}
+img{margin:1em}
+hr{border:1px solid black}
+
+/*animacions*/
+@keyframes spin 
+{
+	from{transform:rotate(0deg);}
+	to{transform:rotate(359deg);}
+}

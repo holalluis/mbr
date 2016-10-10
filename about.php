@@ -11,7 +11,8 @@ MBR-PLC WEB platform (name?), written in PHP/MySQL by Lluís Bosch & Marc Céspe
 
 Contact: lbosch@icra.cat
 
-ICRA/LEQUIA 2015
+ICRA &amp; LEQUIA <?php echo date("Y",time()) ?>. Girona, Catalonia (Spain)
 
-Girona, Catalonia (Spain)
 </pre>
+
+<a target=_blank href="http://github.com/holalluis/mbr">Source Code (Github.com)</a>

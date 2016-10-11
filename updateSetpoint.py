@@ -12,12 +12,13 @@ print "[+] New Value:",value,"<br>"
 #connect to opc
 plc='Matrikon.OPC.Simulation.1'
 try:
-	print "[+] Connecting to PLC...",
+	print "[+] Connecting to '"+plc+"' ...",
 	opc=OpenOPC.client()
 	opc.connect(plc)
-	print "		Success!<br>"
+	print " Success!<br>"
 except:
-	print "Error connecting to OPC<br>"
+	print "Error connecting to '%s' <br>" % plc
+	sys.exit()
 
 writing=(plcPosition,value)
 print "[+] Writing "

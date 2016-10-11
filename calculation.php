@@ -3,7 +3,7 @@
 	include('mysql.php');
 
 	//check input
-	if(!isset($_GET['id']))die('no id selected');
+	if(!isset($_GET['id'])) die('no calculation id selected');
 
 	//input: id & date
 	$id=$_GET['id'];

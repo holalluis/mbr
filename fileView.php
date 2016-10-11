@@ -5,7 +5,7 @@
 	$path=$_GET['path'];
 	$file=$_GET['file'];
 
-	//read file contents
+	//read file contents and display it
 	$content="
 		<head> <title>$file</title> </head>
 		<body>
@@ -14,6 +14,5 @@
 				<pre>".htmlspecialchars(file_get_contents("$path/$file"))."</pre>
 			</code>";
 	
-	//display
 	echo $content;
 ?>

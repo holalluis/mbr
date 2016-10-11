@@ -1,8 +1,9 @@
 <?php
+/* DELETE a calculation*/
 include 'mysql.php';
-//input
+//input: calculation id
 $id=$_GET['id'];
-//delete check
+//delete calculation id
 mysql_query("DELETE FROM calculations WHERE id=$id") or die(mysql_error());
 //go back
 header("Location: calculations.php");

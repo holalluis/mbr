@@ -41,7 +41,7 @@
 					<td>$id
 					<td><a href=device.php?id=$id>$name</a>
 					<td align=center>$count
-					<td><form action=newReading.php method=POST>
+					<td><form action='newReading.php' method=POST>
 						<input name=id_device	type=hidden  value=$id										required>
 						Datetime
 						<input name=date 		autocomplete=off type=date value='".date("Y-m-d",time())."' required>

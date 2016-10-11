@@ -8,6 +8,6 @@ Loading
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 ">
-&#128259 
+&#128259;
 </span> 
 

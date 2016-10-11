@@ -12,10 +12,10 @@ function export2CSV(id)
 		csv+="\r\n"
 	}
 	//create a link and click it
-	var a        = document.createElement('a');
-	a.href       = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-	a.target 	 = '_blank';
-	a.download   = 'export.csv';
+	var a = document.createElement('a');
+	a.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+	a.target = '_blank';
+	a.download = 'export.csv';
 	document.body.appendChild(a);
 	a.click();
 }

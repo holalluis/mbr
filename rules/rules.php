@@ -5,24 +5,26 @@
 	<link rel=stylesheet href="estils.css">
 	<style>td{text-align:center}</style>
 </head><body><center>
-<!--NAVBAR-->		<?php include "navbar.php"?>
-<!--TITLE-->		<h2 onclick=window.location.reload() style=cursor:pointer>View Control Rules</h2>
-<!--SHOW FOLDER-->	<div>Viewing: <b>C://xampp/htdocs/mbr/rules/</b></div>
+<!--NAVBAR-->      <?php include "navbar.php"?>
+<!--TITLE-->       <h2 onclick=window.location.reload() style=cursor:pointer>View Control Rules</h2>
+<!--SHOW FOLDER--> <div>Viewing: <b>C://xampp/htdocs/mbr/rules/</b></div>
+
+<div>NOT IMPLEMENTED, WORK IN PROGRESS</div>
 
 <!--RULES-->
 <table cellpadding=5>
 	<tr><th>File<th>Source Code
 	<?php
-		$path="rules";
+		$path=".";
 		$files=scandir($path); //SCAN DIRECTORY
 		foreach($files as $f)
 		{
 			$filepath="$path/$f";
 			//print only files, not starting by "."
 			//and also not folders
-			if($f[0]=="." || is_dir($filepath))continue;
+			if($f[0]=="." || is_dir($filepath)) continue;
 			//display
-			echo "<tr>	<td>$f <td><a href='fileView.php?path=$path&file=$f' target=_blank >View</a> ";
+			echo "<tr><td>$f<td><a href='fileView.php?path=$path&file=$f' target=_blank >View</a>";
 		}
 	?>
 </table>

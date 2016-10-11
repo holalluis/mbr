@@ -1,5 +1,4 @@
-<?php
-/* functions for evaluating formulas */
+<?php /* functions for evaluating calculations' formulas */
 
 function idsPerFormula($formula)
 /*

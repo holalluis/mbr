@@ -1,6 +1,6 @@
 <?php 
-	include 'mysql.php';
 	$start=microtime(true);
+	include 'mysql.php';
 ?>
 <!doctype html><html><head>
 	<meta charset=utf-8>
@@ -18,7 +18,7 @@
 	if(!isset($_GET['ids']))
 	{?>
 		<form style="border:1px solid #ccc;max-width:80%;padding:1em;font-size:14px">
-			<div>Hold Ctrl (Windows) or &#8984 (Mac) to select multiple devices</div>
+			<div>Hold Ctrl (Windows) or &#8984; (Mac) and click to select multiple devices</div>
 			<select name="ids[]" multiple size=15>
 				<?php
 					$sql="SELECT * FROM devices";
@@ -57,8 +57,8 @@
 		stackoverflow: http://stackoverflow.com/questions/33350524/pivot-a-table-and-display-n-ordered-time-series
 
 		input: 	-ids (array of integers), e.g. [4,5,6]
-				-from (datestring)
-				-to (datestring)
+				    -from (datestring)
+				    -to (datestring)
 	*/
 	$ids=$_GET['ids'];
 	$from=$_GET['from'];

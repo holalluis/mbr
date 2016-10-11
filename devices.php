@@ -3,14 +3,14 @@
 	$start = microtime(true); //start time
 
 	//input
-	$type=isset($_GET['type']) 		? $_GET['type'] 	 : "" ;
-	$ubic=isset($_GET['ubication']) ? $_GET['ubication'] : "" ;
+	$type=isset($_GET['type'])      ? $_GET['type'] 	   : "";
+	$ubic=isset($_GET['ubication']) ? $_GET['ubication'] : "";
 
 	//define a where clause (string) for the sql query
-	if($type!="") 				$where = "type='$type'";
-	if($ubic!="") 				$where = "ubication='$ubic'";
-	if($type!="" && $ubic!="")  $where = "(type='$type' AND ubication='$ubic')";
-	if($type=="" && $ubic=="")  $where = "1";
+	if($type!="")              $where = "type='$type'";
+	if($ubic!="")              $where = "ubication='$ubic'";
+	if($type!="" && $ubic!="") $where = "(type='$type' AND ubication='$ubic')";
+	if($type=="" && $ubic=="") $where = "1";
 
 	//construct query: devices and number of readings
 	$sql="SELECT id,name,plcPosition,type,unit,ubication,count
@@ -24,15 +24,15 @@
 ?>
 <!doctype html><html><head>
 	<meta charset=utf-8>
+	<link rel=stylesheet href="estils.css">
 	<title><?php 
 		//set title
-		if($type!="") 				$title = $type."s ";
-		if($ubic!="") 				$title = "Devices @ $ubic";
-		if($type!="" && $ubic!="")  $title = $type."s @  $ubic";
-		if($type=="" && $ubic=="")  $title = "All Devices";
+		if($type!="")              $title = $type."s ";
+		if($ubic!="")              $title = "Devices @ $ubic";
+		if($type!="" && $ubic!="") $title = $type."s @  $ubic";
+		if($type=="" && $ubic=="") $title = "All Devices";
 		echo $title;
 	?></title>
-	<link rel=stylesheet href="estils.css">
 	<style>td{text-align:center}</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
@@ -50,13 +50,13 @@
 	<?php
 		while ($row=mysql_fetch_assoc($res))
 		{
-			$id			 	= $row['id'];
-			$name		 	= $row['name'];
-			$type		 	= $row['type'];
-			$ubication	 	= $row['ubication'];
-			$unit		 	= $row['unit'];
-			$plcPosition 	= $row['plcPosition'];
-			$readings 		= $row['count'];
+			$id			 	   = $row['id'];
+			$name		 	   = $row['name'];
+			$type		 	   = $row['type'];
+			$ubication   = $row['ubication'];
+			$unit		 	   = $row['unit'];
+			$plcPosition = $row['plcPosition'];
+			$readings    = $row['count'];
 
 			if($readings==null)$readings=0;
 			$colorRRR = $readings==0 ? "red" : ""; 		//red if number of readings is zero
@@ -75,5 +75,4 @@
 	?>
 </table>
 
-<!--time-->
-<?php printf("Page generated in %f seconds",microtime(true)-$start)?>
+<!--time--><?php printf("Page generated in %f seconds",microtime(true)-$start)?>

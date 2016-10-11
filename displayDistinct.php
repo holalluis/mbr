@@ -1,5 +1,7 @@
 <?php
 
+//function to be used when creating a new device or a new calculation
+
 function displayDistinct($field)
 /* display different existing values from fields in devices table */
 {

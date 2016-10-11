@@ -1,4 +1,5 @@
 <?php 
+	/*create new device in the database*/
 	include'mysql.php';
 	include'displayDistinct.php';
 ?>
@@ -14,11 +15,11 @@
 <!--NEW DEVICE FORM-->
 <form method=POST>
 	<table cellpadding=10>
-		<tr><th>Name		<td><input name=name 		autocomplete=off	required placeholder="e.g. CH4 Sensor">
-		<tr><th>Type		<td><input name=type 		autocomplete=off	required placeholder="e.g. Sensor">		<?php displayDistinct('type')?>
-		<tr><th>Ubication	<td><input name=ubication	autocomplete=off	required placeholder="e.g. Influent"> 	<?php displayDistinct('ubication')?>
-		<tr><th>Unit		<td><input name=unit		autocomplete=off	required placeholder="e.g. mg/l"> 		<?php displayDistinct('unit')?>
-		<tr><th>PLC Position<td><input name=plcPosition autocomplete=off	required placeholder="e.g. AutoGen_XXYYZZ">
+		<tr><th>Name        <td><input name=name        autocomplete=off required placeholder="e.g. CH4 Sensor">
+		<tr><th>Type        <td><input name=type        autocomplete=off required placeholder="e.g. Sensor">   <?php displayDistinct('type')?>
+		<tr><th>Ubication   <td><input name=ubication   autocomplete=off required placeholder="e.g. Influent"> <?php displayDistinct('ubication')?>
+		<tr><th>Unit        <td><input name=unit        autocomplete=off required placeholder="e.g. mg/l">     <?php displayDistinct('unit')?>
+		<tr><th>PLC Position<td><input name=plcPosition autocomplete=off required placeholder="e.g. AutoGen_XXYYZZ">
 		<tr><th><td><button>Insert</button>
 	</table>
 </form>
@@ -26,8 +27,9 @@
 <?php
 	/* NEW DEVICE INSERT TO DB */
 
-	//check input
-	if(!isset($_POST['name'],$_POST['type'],$_POST['ubication'],$_POST['unit'],$_POST['plcPosition']))die();
+	//check input. name, type, ubication, unit and plcPosition are mandatory
+	if(!isset($_POST['name'],$_POST['type'],$_POST['ubication'],$_POST['unit'],$_POST['plcPosition'])) 
+		die();
 
 	//process input
 	$name=mysql_real_escape_string($_POST['name']);

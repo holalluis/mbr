@@ -1,11 +1,26 @@
 # MBR
 
-##manual
+## Manual en desenvolupament
 
 ### TO DO
-* NEXT: exportar estructura base de dades a un fitxer i comprovar si existeix a mysql.php
-* offline: comprovar si a nou reading la hora ja existeix
-* new device: tipus offline plc position N/A desactivar
-* SQL.php és insegur: warning per inserts a SQL.php
-* canviar comportament delete
-* rules		
+* NEXT: exportar arxiu.sql amb estructura base de dades
+* Arxiu 'config': per base de dades i direcció del PLC
+
+	Exemple:
+
+	[MySQL]
+		host= "127.0.0.1"
+		user= "root"
+		pass= ""
+		ddbb= "mbr"
+
+	[OPC]
+		plc='Matrikon.OPC.Simulation.1'
+
+* New device: tipus offline plc position N/A desactivar
+* New device tipus manual (offline): comprovar si a problems els detecta, i si és així, treure'ls, pq no són problems
+* Offline nou reading: comprovar si la hora ja existeix, per avisar l'usuari
+* sql.php: és insegur, cal un warning per comandes INSERT
+* sql.php: canviar comportament delete
+
+* Rules	(més endavant)

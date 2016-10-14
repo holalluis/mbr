@@ -21,7 +21,7 @@
 	<style>
 		table{font-size:16px}
 		td{text-align:center; width:150px; height:50px; cursor:pointer}
-		td:hover{background:yellow}
+		td:hover{background:#D0F5A9;}
 		th{background:white}
 	</style>
 	<script>
@@ -93,7 +93,7 @@
 				//count devices of this type and ubication
 				$count=mysql_num_rows(mysql_query("SELECT 1 FROM devices WHERE type='$type' AND ubication='$ubic'"));
 				echo "	<td	onclick=\"window.location='/mbr/devices.php?type=$type&ubication=$ubic'\" 
-							onmouseover=\"highLight('$ubic','$type','#F2F5A9')\" 
+							onmouseover=\"highLight('$ubic','$type','#F5F6CE')\" 
 							onmouseout=\"highLight('$ubic','$type','')\" 
 							title='$type"."s in $ubic'
 						>View ($count)";

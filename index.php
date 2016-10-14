@@ -8,11 +8,14 @@
 	<link rel=stylesheet href=estils.css>
 </head><body><center>	
 <!--NAVBAR--><?php include("navbar.php")?>
-<!--TITLE--><h1 onclick=window.location.reload() style=cursor:pointer>HOME - QUART PILOT PLANT</h1>
+<!--TITLE--><h1 onclick=window.location.reload() style=cursor:pointer>HOME - PLC READER</h1>
 
 <!--PLANT PICTURE-->
 <div style="height:350px;background:white;border:1px solid #ccc;display:inline-block">
-	<a href="img/Plant.png" style=cursor:-webkit-zoom-in><img src="img/Plant.png" alt="Pilot plant" style=height:95%></a>
+	Image C:\xampp\htdocs\mbr\img\Plant.png
+	<br>
+	<a href="img/Plant.png" style=cursor:-webkit-zoom-in>
+		<img src="img/Plant.png" alt="Pilot plant" style=height:95%></a>
 </div>
 
 <!--DB SIZE TABLE-->

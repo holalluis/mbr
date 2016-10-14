@@ -3,27 +3,45 @@
 	function nlink($direccio,$nom)
 	{
 		if($direccio==$_SERVER['PHP_SELF']) 
-			echo "<a href='$direccio' style=color:black>$nom</a>";
+			echo "<a href='$direccio' style=background:#ddd;color:black>$nom</a>";
 		else 
 			echo "<a href='$direccio'>$nom</a>";
-		echo " &#9474 ";
 	}	
 ?>
-<div style="margin:0;font-size:18px"> 
+<div id=navbar> 
 	<?php
 		//simbol de menú (3 barres horitzontals)
 		echo "&#9776; ";
-		nlink("/mbr/index.php"        ,"&#127968; HOME");
-		nlink("/mbr/viewDevices.php"	,"&#127975; Devices");
-		nlink("/mbr/readings.php"     ,"&#128214; Readings");
-		nlink("/mbr/calculations.php"	,"&sum; 	  Calculations"); 
-		nlink("/mbr/offline.php"      ,"&#9998; 	Offline"); 
-		nlink("/mbr/setpoints.php"		,"&#128073; Setpoints");
-		nlink("/mbr/export.php"       ,"&rAarr;   Export");
-		nlink("/mbr/rules/rules.php"  ,"&#128278; Rules"); 
-		nlink("/mbr/problems.php"     ,"&#10060;  Find Problems");
-		nlink("/mbr/about.php"        ,"&#128129; About");
-		nlink("/mbr/sql.php"          ,"&#128187; SQL");
+		nlink("/mbr/index.php"        ,"HOME");
+		nlink("/mbr/viewDevices.php"  ,"Devices");
+		nlink("/mbr/readings.php"     ,"Readings");
+		nlink("/mbr/calculations.php" ,"Calculations"); 
+		nlink("/mbr/offline.php"      ,"Offline"); 
+		nlink("/mbr/setpoints.php"    ,"Setpoints");
+		nlink("/mbr/export.php"       ,"Export");
+		nlink("/mbr/rules/rules.php"  ,"Rules"); 
+		nlink("/mbr/problems.php"     ,"Find Problems");
+		nlink("/mbr/about.php"        ,"About");
+		nlink("/mbr/sql.php"          ,"SQL");
 	?>
 </div>
-<hr>
+
+<style>
+	#navbar {
+		border-bottom:1px solid #ccc;
+		padding:0;
+		margin:0;
+		font-size:18px;
+		background:white;
+	}
+	#navbar a {
+		display:inline-block;
+		border-right:1px solid #ccc;
+		padding:0.5em 0.3em;
+		color:#666;
+	}
+	#navbar a:hover {
+		background:#ccc;	
+		transition:all 0.5s;
+	}
+</style>

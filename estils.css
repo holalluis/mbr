@@ -1,4 +1,7 @@
 *{margin:0}
+
+.inline{vertical-align:top;display:inline-block;}
+
 h1,h2,h3{margin:0.6em}
 
 h1,h2{ color:#74AC00; }

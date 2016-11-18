@@ -114,9 +114,10 @@
 			{
 				$value=$row["device_$id_device"];
 				$values[]=$value;
+				$value=round($value,4);
 				echo "<td>$value";
 			}
-			echo "<td style=background:#af0>".applyFormula($formula,$values);
+			echo "<td style=background:#af0>".round(applyFormula($formula,$values),4);
 		}
 	?>
 </table>

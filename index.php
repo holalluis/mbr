@@ -8,7 +8,11 @@
 	<link rel=stylesheet href=estils.css>
 </head><body><center>	
 <!--NAVBAR--><?php include("navbar.php")?>
-<!--TITLE--><h1 onclick=window.location.reload() style=cursor:pointer>HOME - PLC READER</h1>
+<!--TITLE--><h1 onclick=window.location.reload() style=cursor:pointer>HOME &mdash; PLC READER</h1>
+
+<p>
+	SCADA-like web-app
+</p>
 
 <!--PLANT PICTURE-->
 <div style="height:350px;background:white;border:1px solid #ccc;display:inline-block">

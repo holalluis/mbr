@@ -46,7 +46,7 @@
 			#deviceInfo button {float:right}
 		</style>
 	<tr><th colspan=3 style="text-align:left">Device Information
-	<tr><th align=left>Id 			<td colspan=2><?php echo $id ?>
+	<tr><th align=left>Device Id	<td colspan=2><?php echo $id ?>
 	<tr><th align=left>Type 		<td><span field=type><?php echo "<a href=devices.php?type=$type>$type</a>" ?></span>
 		<td> <button onclick=editDevice(<?php echo $id?>,'type')>Edit</button>
 
@@ -66,9 +66,11 @@
 		</button>
 </table>
 
-
 <!--READINGS-->
-<table cellpadding=3 style="display:inline-block;vertical-align:top">
+<table id=readings cellpadding=3 style="display:inline-block;vertical-align:top">
+	<style>
+		#readings tbody tr:last-child() {background:red}
+	</style>
 	<?php
 		//get size of whole database for this device
 		$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings WHERE id_device=$id")));
@@ -84,7 +86,7 @@
 		else $dateFilter="";
 
 		//set limit for readings displayed depending on $dateFilter
-		$limit = $dateFilter=="" ? "LIMIT 20" : "LIMIT 500";
+		$limit = $dateFilter=="" ? "LIMIT 10" : "LIMIT 500";
 
 		//final sql query
 		$sql="	SELECT * FROM 
@@ -98,11 +100,11 @@
 		$results=mysql_num_rows($res);
 
 	?>
-	<tr><th colspan=2 style=font-size:18px>
-		Readings <span style=font-size:14px;font-weight:normal> - <?php echo "Showing last $results (total:$dbSize)"?></span>
+	<tr><th colspan=3 style=font-size:18px>
+		Readings <span style=font-size:14px;font-weight:normal> &mdash; <?php echo "Showing last $results (of $dbSize)"?></span>
 
 	<!--filter by date form-->
-	<tr><th colspan=2 style=font-size:12px>
+	<tr><th colspan=3 style=font-size:12px>
 		<form method=GET style="display:inline-block;vertical-align:top;font-weight:normal" action="/mbr/device.php">
 					<input name=id type=hidden value="<?php echo $id?>">
 			From 	<input name=from type=date size=3 value="2000-01-01">
@@ -111,7 +113,14 @@
 		</form>
 
 	<!--selected data header-->
-	<tr><th>Date &darr;<th>Value (<?php echo $unit?>)
+	<tr><th>Date &darr;<th colspan=2>Value (<?php echo $unit?>)
+
+	<script>
+		function deleteReading(id)
+		{
+			window.location="deleteReading.php?id="+id
+		}
+	</script>
 
 	<!--results-->
 	<?php
@@ -120,13 +129,16 @@
 		{
 			$date  = $row['date'];
 			$value = $row['value'];
+			$id    = $row['id'];
+			$value=round($value,4);
 			echo "<tr style='font-size:12px'> <td align=center>$date <td align=center>$value";
+			echo "<td><button style=color:red;float:right onclick=deleteReading($id)>Delete</button>";
 		}
 		echo "<tfoot>";
 		if(isset($date)) //this means that this device has readings
 		{
 			$lastReading=timeAgo($date);
-			echo "<tr><th colspan=2>Last reading: $lastReading";
+			echo "<tr><th colspan=3>Last reading: $lastReading";
 		}
 	?>
 </table><br>

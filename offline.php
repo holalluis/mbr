@@ -8,7 +8,9 @@
 	<link rel=stylesheet href="estils.css">
 </head><body><center>
 <!--NAVBAR--><?php include"navbar.php"?>
-<!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Devices (NO automatic readings)</h2>
+<!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Devices</h2>
+
+<h3>The devices of type="Offline" readings are inserted here by the user manually</h3>
 
 <!--OFFLINE DEVICES-->
 <table cellpadding=5>
@@ -43,9 +45,9 @@
 					<td align=center>$count
 					<td><form action='newReading.php' method=POST>
 						<input name=id_device	type=hidden  value=$id										required>
-						Datetime
+						Date
 						<input name=date 		autocomplete=off type=date value='".date("Y-m-d",time())."' required>
-						<input name=time 		autocomplete=off type=time value='00:00' 					required>
+						<input name=time 		autocomplete=off type=time value='".date("H:i",time())."' 	required>
 						Value 
 						<input name=value 		placeholder='$unit' autocomplete=off size=2 				required>
 						<button>Insert</button>

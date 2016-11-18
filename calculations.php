@@ -8,11 +8,14 @@
 	</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include "navbar.php"?>
-<!--NEW-->		<div style="border:1px solid blue;width:13%"> <a href="newCalculation.php">+Create New Calculation</a></div>
 <!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>User-Defined Calculations</h2>
 
+<div class=inline style="border:1px solid blue;width:13%"> <a href="newCalculation.php">+Create New Calculation</a></div>
+<h3 class=inline>Create calculations using sensor readings</h3>
+
 <!--CREATED CALCULATIONS-->
-<table cellpadding=10><tr><th>Id<th>Name<th>Formula<th>Devices involved<th>Unit<th>Options
+<div>
+<table cellpadding=10><tr><th>Calculation Name<th>Formula<th>Devices involved<th>Unit<th>Options
 <?php
 	include 'calculations_library.php'; //to use idsPerFormula()
 	$sql="SELECT * FROM calculations";
@@ -26,7 +29,6 @@
 		//get devices ids array from formula
 		$devicesInvolved=count(idsPerFormula($formula));
 		echo "<tr>
-				<td>$id
 				<td><a href=calculation.php?id=$id>$name</a>
 				<td>$formula
 				<td align=center>$devicesInvolved
@@ -36,5 +38,10 @@
 							style='background:red'>
 							Delete Calculation</button>";
 	}
+	if(mysql_num_rows($res)==0)
+	{
+		echo "<tr style=color:#666><td colspan=5>~No calculations created yet";
+	}
 ?>
 </table>
+</div>

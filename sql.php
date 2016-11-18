@@ -9,7 +9,10 @@
 </head><body onload="document.getElementsByName('query')[0].select()"><center>
 <!--NAVBAR--><?php include("navbar.php") ?>
 <!--TITLE--><h2 onclick=window.location="sql.php" style=cursor:pointer>Execute SQL query (advanced use)</h2>
-<h4>Learn MySQL: <a target=_blank href=http://dev.mysql.com/doc/refman/5.7/en/entering-queries.html>MySQL tutorial</a></h4>
+
+<div>
+	"DELETE" commands are not allowed for security
+</div>
 
 <!--WRITE QUERY FORM-->
 <form method=POST>

@@ -27,16 +27,16 @@
 	<link rel=stylesheet href="estils.css">
 	<title><?php 
 		//set title
-		if($type!="")              $title = $type."s ";
-		if($ubic!="")              $title = "Devices @ $ubic";
-		if($type!="" && $ubic!="") $title = $type."s @  $ubic";
+		if($type!="")              $title = "<u>$type"."s</u> ";
+		if($ubic!="")              $title = "Devices at <u>$ubic</u>";
+		if($type!="" && $ubic!="") $title = "<u>$type"."s</u> at <u>$ubic</u>";
 		if($type=="" && $ubic=="") $title = "All Devices";
 		echo $title;
 	?></title>
 	<style>td{text-align:center}</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
-<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Devices - View <?php echo $title ?></h2>
+<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Devices &mdash; Viewing <?php echo $title ?></h2>
 
 <!--QUERY & Nº of results-->
 <div><b><?php
@@ -46,7 +46,7 @@
 
 <!--DEVICES-->
 <table cellpadding=3>
-	<tr><th>Id<th>Device<th>Type<th>Ubication<th>Unit<th>PLC Position<th>Readings
+	<tr><th>Device Id<th>Name<th>Type<th>Ubication<th>Unit<th>PLC Position<th>Readings
 	<?php
 		while ($row=mysql_fetch_assoc($res))
 		{

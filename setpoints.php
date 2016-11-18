@@ -10,6 +10,9 @@
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 onclick=window.location='setpoints.php' style=cursor:pointer>Update Setpoints Manually (directly to PLC)</h2>
 
+<h3>The readings of the devices of type="Setpoint" can be updated to the PLC from here</h3>
+
+
 <?php
 	//protect this page with password to continue or stop loading TODO TBD
 	/*
@@ -53,7 +56,7 @@
 			$ubic 		 = $row['ubication'];
 			$unit 		 = $row['unit'];
 			$plcPosition = $row['plcPosition'];
-			$setpoint	 = $row['value'];
+			$setpoint	 = round($row['value'],4);
 			$date	 	 = $row['date'];
 
 			//red if there is no setpoint or plc position
@@ -71,7 +74,7 @@
 					<td>
 						<input name=plcPosition value='$plcPosition' type=hidden>
 						<input name=value size=1 placeholder=0 autocomplete=off>
-						<button>Save</button>
+						<button>Update</button>
 				</form>
 				<td style=background:$colorPLC>$plcPosition
 				<td><a href=devices.php?ubication=$ubic>$ubic</a>

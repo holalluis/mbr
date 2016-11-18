@@ -11,8 +11,8 @@
 <!--NAVBAR--><?php include "navbar.php"?>
 
 <!--TITLE AND QUERY-->
-<div><?php
-	$limit=25;
+<?php
+	$limit=10;
 	$sql="SELECT 
 			readings.id, 
 			readings.id_device, 
@@ -31,12 +31,15 @@
 	$res=mysql_query($sql) or die(mysql_error());
 	$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));
 	$results=mysql_num_rows($res);
-	echo "<h2 onclick=window.location.reload() style=cursor:pointer>Last $results Readings (total: $dbSize)</h2>";
-?></div>
+	echo "<h2 onclick=window.location.reload() style=cursor:pointer>Last $results Readings (of $dbSize)</h2>";
+?>
 
 <!--READINGS-->
 <table cellpadding=4>
-	<tr><th>Id<th>Date<th>Time<th>Device<th>Value (Unit)<th>Type<th>Ubication
+	<tr><th style=display:none>Id
+		<th>Device
+		<th>Value (Unit)
+		<th>When
 	<?php
 		while ($row=mysql_fetch_assoc($res))
 		{
@@ -52,14 +55,12 @@
 			//time ago
 			$ago=timeAgo($date);
 			//display
+			$value=round($value,4);
 			echo "<tr>
-				<td>$id
-				<td>$date
-				<td>$ago
+				<td style=display:none>$id
 				<td><a href=device.php?id=$id_device title='$type, $ubication'>$name</a>
 				<td>$value ($unit)
-				<td><a href=devices.php?type=$type>$type</a>
-				<td><a href=devices.php?ubication=$ubication>$ubication</a>
+				<td title='$date'>$ago
 			";
 		}
 	?>

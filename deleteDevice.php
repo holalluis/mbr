@@ -20,4 +20,4 @@ mysql_query($sql) or die(mysql_error());
 </head><body><center>	
 <!--NAVBAR--><?php include("navbar.php")?>
 <?php 
-	die("<div><b style=color:red>Device id $id removed correctly</b></div>")?>
+	die("<div><h2 style=color:red>Device id $id removed correctly</h2></div>")?>

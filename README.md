@@ -8,9 +8,9 @@ El mòdul "supervisor" (fet amb Python) s'encarrega de llegir el PLC contínuame
 
 ```
 
- +---------+   +-----+    +------------+   +---------------+   +---------+
- | Sensors |-->| PLC |<-->| Supervisor |-->| Base de Dades |-->| Web MBR | <-- Usuari
- +---------+   +-----+    +------------+   +---------------+   +---------+
+ +---------+   +-----+    +------------+    +---------------+    +---------+
+ | Sensors |-->| PLC |<-->| Supervisor |<-->| Base de Dades |<-->| Web MBR | <-- Usuari
+ +---------+   +-----+    +------------+    +---------------+    +---------+
 
 ```
 

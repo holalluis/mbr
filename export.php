@@ -31,6 +31,10 @@
 						$ubic = $row['ubication'];
 						echo "<option value=$id>$id: $name ($type,$ubic)</option>";
 					}
+					if(mysql_num_rows($res)==0)
+					{
+						echo "<option disabled>~No devices created yet";
+					}
 				?>
 			</select>
 			<!--date filter form-->

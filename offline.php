@@ -56,6 +56,10 @@
 					<td><a href=devices.php?ubication=$ubic>$ubic</a>
 			";
 		}	
+		if(mysql_num_rows($res)==0)
+		{
+			echo "<tr><td colspan=7>~No devices type Offline created yet";
+		}
 	?>
 </table>
 

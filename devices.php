@@ -72,6 +72,10 @@
 					<td style=background:$colorPLC>$plcPosition
 					<td style=background:$colorRRR>$readings";
 		}
+		if(mysql_num_rows($res)==0)
+		{
+			echo "<tr><td colspan=7>~No devices created yet";
+		}
 	?>
 </table>
 

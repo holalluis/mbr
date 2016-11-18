@@ -30,15 +30,36 @@
 <!--TITLE-->	<h2 style=cursor:pointer onclick="window.location='<?php echo "device.php?id=$id"?>'"><?php echo $name?></h2>
 
 <!--DEVICE INFO-->
-<table cellpadding=10 style="display:inline-block;vertical-align:top">
-	<tr><th colspan=2 style="text-align:left">Device Information
-	<tr><th align=left>Id 			<td><?php echo $id ?>
-	<tr><th align=left>Type 		<td><?php echo "<a href=devices.php?type=$type>$type</a>" ?>
-	<tr><th align=left>Ubication	<td><?php echo "<a href=devices.php?ubication=$ubic>$ubic</a>" ?>
-	<tr><th align=left>Unit			<td><?php echo $unit ?>
-	<tr><th align=left>Plc Position	<td><?php echo $plcP ?>
+<table id=deviceInfo cellpadding=10 style="display:inline-block;vertical-align:top">
+		<script>
+			function editDevice(id,field)
+			{
+				var currValue=document.querySelector('#deviceInfo span[field='+field+']').textContent
+				var value=prompt("New value for '"+field+"' field:",currValue);
+				if(value)
+				{
+					window.location="editDevice.php?id="+id+"&"+field+"="+value
+				}
+			}
+		</script>
+		<style>
+			#deviceInfo button {float:right}
+		</style>
+	<tr><th colspan=3 style="text-align:left">Device Information
+	<tr><th align=left>Id 			<td colspan=2><?php echo $id ?>
+	<tr><th align=left>Type 		<td><span field=type><?php echo "<a href=devices.php?type=$type>$type</a>" ?></span>
+		<td> <button onclick=editDevice(<?php echo $id?>,'type')>Edit</button>
+
+	<tr><th align=left>Ubication	<td><span field=ubication><?php echo "<a href=devices.php?ubication=$ubic>$ubic</a>"?></span>
+		<td><button onclick=editDevice(<?php echo $id?>,'ubication')>Edit</button>
+
+	<tr><th align=left>Unit			<td><span field=unit><?php echo $unit ?></span>
+		<td><button onclick=editDevice(<?php echo $id?>,'unit')>Edit</button>
+
+	<tr><th align=left>Plc Position	<td><span field=plcPosition><?php echo $plcP?></span>
+		<td><button onclick=editDevice(<?php echo $id?>,'plcPosition')>Edit</button>
 	<!--DELETE DEVICE-->
-	<tr><td colspan=2 style=background:#FA5858>DANGER ZONE
+	<tr><td colspan=3 style=background:#FA5858>DANGER ZONE
 		<button onclick="if(confirm('Are you sure that you want to delete device id <?php echo $id?>? ALL READINGS FROM THIS DEVICE WILL BE DELETED'))
 				window.location='deleteDevice.php?id=<?php echo $id?>'"
 			style="background:red">Delete Device

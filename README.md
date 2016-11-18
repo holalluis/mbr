@@ -4,8 +4,9 @@ Projecte en desenvolupament
 
 MBR (nom provisional) és una web app que llegeix una base de dades de sensors connectats a un PLC.
 
-```
 El mòdul "supervisor" (fet amb Python) s'encarrega de llegir el PLC contínuament i omplir la base de dades.
+
+```
 
  +---------+   +-----+    +------------+   +---------------+   +---------+
  | Sensors |-->| PLC |<-->| Supervisor |-->| Base de Dades |-->| Web MBR | <-- Usuari

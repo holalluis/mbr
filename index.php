@@ -10,9 +10,9 @@
 <!--NAVBAR--><?php include("navbar.php")?>
 <!--TITLE--><h1 onclick=window.location.reload() style=cursor:pointer>HOME &mdash; PLC READER</h1>
 
-<p>
-	SCADA-like web-app
-</p>
+<div>
+	<b> Project under development. Version 0.1 </b>
+</div>
 
 <!--PLANT PICTURE-->
 <div style="height:350px;background:white;border:1px solid #ccc;display:inline-block">

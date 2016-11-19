@@ -9,14 +9,27 @@
 	<style>
 		input{padding:0.5em}
 	</style>
-</head><body><center>
+	<script>
+		function init()
+		{
+			document.querySelector('input[name=name]').select()
+		}
+	</script>
+</head><body onload=init()><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Create New Device</h2>
 <!--NEW DEVICE FORM-->
 <form method=POST>
 	<table cellpadding=10>
-		<tr><th>Name        <td><input name=name        autocomplete=off required placeholder="e.g. CH4 Sensor">
-		<tr><th>Type        <td><input name=type        autocomplete=off required placeholder="e.g. Sensor">   <?php displayDistinct('type')?>
+		<tr><th>Name        <td><input name=name        autocomplete=off required placeholder="e.g. CH4 Sensor" value="untitled device">
+		<tr><th>Type        <td><input name=type        autocomplete=off required placeholder="e.g. Sensor" list=deviceTypes>   <?php displayDistinct('type')?>
+			<datalist id=deviceTypes>
+				<option>Sensor
+				<option>Alarm
+				<option>Equipment
+				<option>Setpoint
+				<option>Offline
+			</datalist>
 		<tr><th>Ubication   <td><input name=ubication   autocomplete=off required placeholder="e.g. Influent"> <?php displayDistinct('ubication')?>
 		<tr><th>Unit        <td><input name=unit        autocomplete=off required placeholder="e.g. mg/l">     <?php displayDistinct('unit')?>
 		<tr><th>PLC Position<td><input name=plcPosition autocomplete=off required placeholder="e.g. AutoGen_XXYYZZ">

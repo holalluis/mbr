@@ -35,7 +35,7 @@
 ?>
 
 <!--READINGS-->
-<table cellpadding=4>
+<table cellpadding=4 style=margin-top:2em>
 	<tr><th style=display:none>Id
 		<th>Device
 		<th>Value (Unit)

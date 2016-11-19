@@ -10,7 +10,7 @@
 <!--NAVBAR--><?php include"navbar.php"?>
 <!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Devices</h2>
 
-<h3>The devices of type="Offline" readings are inserted here by the user manually</h3>
+<h3 style=margin-bottom:2em>The readings of the devices with type="Offline" are inserted here manually</h3>
 
 <!--OFFLINE DEVICES-->
 <table cellpadding=5>
@@ -26,7 +26,7 @@
 		WHERE type='Offline'";
 		$res=mysql_query($sql);
 		$results=mysql_num_rows($res);
-		echo "<b>$results devices</b>"; //value oustide a <th> element will show at the top of the table
+		echo "<b>$results offline devices found</b>"; //value oustide a <th> element will show at the top of the table
 		while($row=mysql_fetch_array($res))
 		{
 			$id   	= $row['id'];
@@ -49,7 +49,7 @@
 						<input name=date 		autocomplete=off type=date value='".date("Y-m-d",time())."' required>
 						<input name=time 		autocomplete=off type=time value='".date("H:i",time())."' 	required>
 						Value 
-						<input name=value 		placeholder='$unit' autocomplete=off size=2 				required>
+						<input name=value 		placeholder='$unit' autocomplete=off required style='width:40px' type=number>
 						<button>Insert</button>
 					</form>
 					<td>$unit

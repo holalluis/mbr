@@ -13,7 +13,7 @@
 		//simbol de menú (3 barres horitzontals)
 		echo "&#9776; ";
 		nlink("/mbr/index.php"        ,"HOME");
-		nlink("/mbr/viewDevices.php"  ,"Devices");
+		nlink("/mbr/devices.php"      ,"Devices");
 		nlink("/mbr/readings.php"     ,"Readings");
 		nlink("/mbr/calculations.php" ,"Calculations"); 
 		nlink("/mbr/offline.php"      ,"Offline"); 
@@ -23,7 +23,6 @@
 		nlink("/mbr/problems.php"     ,"Problems");
 		nlink("/mbr/sql.php"          ,"SQL (advanced)");
 		nlink("/mbr/about.php"        ,"About");
-		nlink("/mbr/README.md"        ,"Readme");
 	?>
 </div>
 

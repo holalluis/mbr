@@ -10,8 +10,7 @@
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 onclick=window.location='setpoints.php' style=cursor:pointer>Update Setpoints Manually (directly to PLC)</h2>
 
-<h3>The readings of the devices of type="Setpoint" can be updated to the PLC from here</h3>
-
+<h3 style=margin-bottom:2em>The readings of the devices of type="Setpoint" can be updated to the PLC from here</h3>
 
 <?php
 	//protect this page with password to continue or stop loading TODO TBD
@@ -48,7 +47,7 @@
 		";
 		$res=mysql_query($sql);
 		$setpoints=mysql_num_rows($res);
-		echo "<b>$setpoints setpoints</b>"; //value oustide a <th> element will show at the top of the table
+		echo "<b>$setpoints setpoint devices found</b>"; //value oustide a <th> element will show at the top of the table
 		while($row=mysql_fetch_array($res))
 		{
 			$id   		 = $row['id'];

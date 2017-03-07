@@ -35,7 +35,7 @@
 ?>
 
 <!--READINGS-->
-<table cellpadding=4>
+<table cellpadding=4 style=margin-top:2em>
 	<tr><th style=display:none>Id
 		<th>Device
 		<th>Value (Unit)
@@ -62,6 +62,10 @@
 				<td>$value ($unit)
 				<td title='$date'>$ago
 			";
+		}
+		if(mysql_num_rows($res)==0)
+		{
+			echo "<tr><td colspan=7>~No readings inserted yet";
 		}
 	?>
 	<tr><th colspan=7>[...<?php echo ($dbSize-$results)." more"?>...]

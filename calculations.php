@@ -3,23 +3,29 @@
 	<meta charset=utf-8>
 	<title>Calculations</title>
 	<link rel=stylesheet href="estils.css">
-	<style>
-		table{display:inline-block;vertical-align:top;}
-	</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include "navbar.php"?>
 <!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>User-Defined Calculations</h2>
 
-<div class=inline style="border:1px solid blue;width:13%"> <a href="newCalculation.php">+Create New Calculation</a></div>
-<h3 class=inline>Create calculations using sensor readings</h3>
+<!--new-->
+<div id=newCalc
+	class=inline onclick=window.location='newCalculation.php'> 
+	<style>
+		#newCalc {border:1px solid blue;cursor:pointer}
+		#newCalc:hover {background:lightgreen;transition:all 0.5s}
+	</style>
+	<b>+ Create New Calculation</b>
+</div>
 
 <!--CREATED CALCULATIONS-->
-<div>
-<table cellpadding=10><tr><th>Calculation Name<th>Formula<th>Devices involved<th>Unit<th>Options
+<div style=margin-top:2em>
+<table cellpadding=10>
+	<tr><th>Calculation Name<th>Formula<th>Devices involved<th>Unit<th>Options</tr>
 <?php
 	include 'calculations_library.php'; //to use idsPerFormula()
 	$sql="SELECT * FROM calculations";
 	$res=mysql_query($sql) or die(mysql_error());
+	echo "<b>".mysql_num_rows($res)." calculations found</b>";
 	while($row=mysql_fetch_array($res))
 	{
 		$id			= $row['id'];

@@ -31,6 +31,10 @@
 				<option>Setpoint
 				<option>Offline
 			</datalist>
+			<br>
+			<br>
+			Important: type has to be "Sensor", "Alarm", "Equipment" or "Setpoint" in order to be read from the PLC. <br>
+			If type is "Offline", its readings will be user-entered instead.
 		<tr><th>Ubication   <td><input name=ubication   autocomplete=off required placeholder="e.g. Influent"> <?php displayDistinct('ubication')?>
 		<tr><th>Unit        <td><input name=unit        autocomplete=off required placeholder="e.g. mg/l">     <?php displayDistinct('unit')?>
 		<tr><th><td><button>Insert</button>

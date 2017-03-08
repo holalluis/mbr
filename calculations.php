@@ -20,7 +20,7 @@
 <!--CREATED CALCULATIONS-->
 <div style=margin-top:2em>
 <table cellpadding=10>
-	<tr><th>Calculation Name<th>Formula<th>Devices involved<th>Unit<th>Options</tr>
+	<tr><th>Calculation Name<th>Formula<th>Addresses involved<th>Unit<th>Options</tr>
 <?php
 	include 'calculations_library.php'; //to use idsPerFormula()
 	$sql="SELECT * FROM calculations";

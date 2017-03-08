@@ -8,13 +8,14 @@
 	<link rel=stylesheet href="estils.css">
 </head><body><center>
 <!--NAVBAR--><?php include"navbar.php"?>
-<!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Devices</h2>
+<!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Records</h2>
 
-<h3 style=margin-bottom:2em>The readings of the devices with type="Offline" are inserted here manually</h3>
+<h3 style=margin-bottom:2em>The readings of the addresses type="Offline" have no PLC address, they are inserted here manually</h3>
 
 <!--OFFLINE DEVICES-->
 <table cellpadding=5>
-	<tr><th>Id<th>Device<th>Readings<th>Insert New Offline Reading<th>Unit<th>Ubication</tr>
+	<tr><!--<th>Id-->
+	<th>Description<th>Readings<th>Insert New Offline Reading<th>Unit<th>Ubication</tr>
 	<?php
 		$sql="
 		SELECT id,name,unit,ubication,count FROM devices LEFT JOIN
@@ -26,7 +27,7 @@
 		WHERE type='Offline'";
 		$res=mysql_query($sql);
 		$results=mysql_num_rows($res);
-		echo "<b>$results offline devices found</b>"; //value oustide a <th> element will show at the top of the table
+		echo "<b>$results addresses type='Offline' found</b>"; //value oustide a <th> element will show at the top of the table
 		while($row=mysql_fetch_array($res))
 		{
 			$id   	= $row['id'];
@@ -40,7 +41,7 @@
 
 			//display
 			echo "<tr>
-					<td>$id
+					<!--<td>$id-->
 					<td><a href=device.php?id=$id>$name</a>
 					<td align=center>$count
 					<td><form action='newReading.php' method=POST>

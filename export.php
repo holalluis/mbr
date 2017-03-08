@@ -18,7 +18,7 @@
 	if(!isset($_GET['ids']))
 	{?>
 		<form style="border:1px solid #ccc;max-width:80%;padding:1em;font-size:14px">
-			<div>Hold Ctrl (Windows) or &#8984; (Mac) and click to select multiple devices</div>
+			<div>Hold Ctrl (Windows) or &#8984; (Mac) and click to select multiple addresses</div>
 			<select name="ids[]" multiple size=15>
 				<?php
 					$sql="SELECT * FROM devices";

@@ -17,11 +17,12 @@
 	</script>
 </head><body onload=init()><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
-<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Create New Device</h2>
+<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Add New PLC address</h2>
 <!--NEW DEVICE FORM-->
 <form method=POST>
 	<table cellpadding=10>
-		<tr><th>Name        <td><input name=name        autocomplete=off required placeholder="e.g. CH4 Sensor" value="untitled device">
+		<tr><th>Description <td><input name=name        autocomplete=off required placeholder="e.g. CH4 Sensor" value="no description">
+		<tr><th>PLC address <td><input name=plcPosition autocomplete=off required placeholder="e.g. AutoGen_XXYYZZ">
 		<tr><th>Type        <td><input name=type        autocomplete=off required placeholder="e.g. Sensor" list=deviceTypes>   <?php displayDistinct('type')?>
 			<datalist id=deviceTypes>
 				<option>Sensor
@@ -32,7 +33,6 @@
 			</datalist>
 		<tr><th>Ubication   <td><input name=ubication   autocomplete=off required placeholder="e.g. Influent"> <?php displayDistinct('ubication')?>
 		<tr><th>Unit        <td><input name=unit        autocomplete=off required placeholder="e.g. mg/l">     <?php displayDistinct('unit')?>
-		<tr><th>PLC Position<td><input name=plcPosition autocomplete=off required placeholder="e.g. AutoGen_XXYYZZ">
 		<tr><th><td><button>Insert</button>
 	</table>
 </form>

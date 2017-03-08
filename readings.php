@@ -37,7 +37,7 @@
 <!--READINGS-->
 <table cellpadding=4 style=margin-top:2em>
 	<tr><th style=display:none>Id
-		<th>Device
+		<th>PLC address
 		<th>Value (Unit)
 		<th>When
 	<?php
@@ -56,6 +56,7 @@
 			$ago=timeAgo($date);
 			//display
 			$value=round($value,4);
+			if($unit==""){$unit="<span style=color:#ccc>no unit</span>";}
 			echo "<tr>
 				<td style=display:none>$id
 				<td><a href=device.php?id=$id_device title='$type, $ubication'>$name</a>

@@ -37,7 +37,7 @@
 </head><body><center>
 <!--NAVBAR--><?php include "navbar.php"?>
 <!--TITLE--><h2 style=cursor:pointer onclick="window.location='<?php echo "calculation.php?id=$id"?>'"><?php echo $name?></h2>
-<!--RESULTS--><div><b><span id=results></span> results</b> (note: only timesteps where all devices have readings are considered)</div>
+<!--RESULTS--><div><b><span id=results></span> results</b> (note: only timesteps where all addresses have readings are considered)</div>
 
 <!--LEFT OF THE PAGE: INFO AND SELECT DATE-->
 <div style="display:inline-block;vertical-align:top">
@@ -78,7 +78,7 @@
 			$device_type	= $row['type'];
 			$device_ubic	= $row['ubication'];
 			//this should be in one line to prevent export to csv issues
-			echo "<th><a href=device.php?id=$device_id title='$device_name, $device_type, $device_ubic'>Device [#id$device_id]</a> ($device_unit)</th>";
+			echo "<th><a href=device.php?id=$device_id title='$device_name, $device_type, $device_ubic'>Address [#id$device_id]</a> ($device_unit)</th>";
 		}
 		echo "<th title='This calculation'>$name ($unit)</th></tr>";
 		//cols array to pivote the readings table (each element will be column)

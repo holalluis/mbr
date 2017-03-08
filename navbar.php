@@ -13,15 +13,15 @@
 		//simbol de menú (3 barres horitzontals)
 		echo "&#9776; ";
 		nlink("/mbr/index.php"        ,"HOME");
-		nlink("/mbr/devices.php"      ,"Devices");
+		nlink("/mbr/devices.php"      ,"PLC addresses");
 		nlink("/mbr/readings.php"     ,"Readings");
 		nlink("/mbr/calculations.php" ,"Calculations"); 
-		nlink("/mbr/offline.php"      ,"Offline"); 
 		nlink("/mbr/setpoints.php"    ,"Setpoints");
+		nlink("/mbr/offline.php"      ,"Offline"); 
 		nlink("/mbr/export.php"       ,"Export");
 		//nlink("/mbr/rules/rules.php"  ,"Rules"); 
 		nlink("/mbr/problems.php"     ,"Problems");
-		nlink("/mbr/sql.php"          ,"SQL (advanced)");
+		//nlink("/mbr/sql.php"          ,"SQL (advanced)");
 		nlink("/mbr/about.php"        ,"About");
 	?>
 </div>

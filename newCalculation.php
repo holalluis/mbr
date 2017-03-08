@@ -21,10 +21,10 @@
 
 <!--NEW CALCULATION FORM-->
 <form method=POST><table cellpadding=10>
-	<tr><th>Name		<td><input name=name 		autocomplete=off	required placeholder="e.g. Device1+Device2">
-	<tr><th>Formula		<td><input name=formula 	autocomplete=off	required placeholder="e.g. [#id1]+[#id2]">
+	<tr><th>Description <td><input name=name 		autocomplete=off	required placeholder="e.g. Address1+Address2">
+	<tr><th>Formula     <td><input name=formula 	autocomplete=off	required placeholder="e.g. [#id1]+[#id2]">
 		<select onchange=writeDeviceToFormula(this.value)>
-			<option>--select device
+			<option>--select address
 			<?php
 				$sql="SELECT id,name FROM devices";
 				$res=mysql_query($sql) or die();

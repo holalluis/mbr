@@ -8,9 +8,9 @@
 	<style>td{text-align:center}</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
-<!--TITLE-->	<h2 onclick=window.location='setpoints.php' style=cursor:pointer>Update Setpoints Manually (directly to PLC)</h2>
+<!--TITLE-->	<h2 onclick=window.location='setpoints.php' style=cursor:pointer>Update PLC Setpoints</h2>
 
-<h3 style=margin-bottom:2em>The readings of the devices of type="Setpoint" can be updated to the PLC from here</h3>
+<h3 style=margin-bottom:2em>The readings of the addresses type="Setpoint" can be written to the PLC here</h3>
 
 <?php
 	//protect this page with password to continue or stop loading TODO TBD
@@ -30,7 +30,9 @@
 
 <!--SETPOINTS-->
 <table cellpadding=3>
-	<tr><th>Id<th>Device<th>Last Value<th>Unit<th>New Value<th>PLC Position<th>Ubication</tr>
+	<tr>
+	<!--<th>Id-->
+	<th>Description<th>Last Value<th>Unit<th>New Value<th>PLC Position<th>Ubication</tr>
 	<?php
 		//query setpoints AND last value (which corresponts to max id grouped by id_device)
 		$sql="
@@ -47,7 +49,7 @@
 		";
 		$res=mysql_query($sql);
 		$setpoints=mysql_num_rows($res);
-		echo "<b>$setpoints setpoint devices found</b>"; //value oustide a <th> element will show at the top of the table
+		echo "<b>$setpoints addresses type='Setpoint' found</b>"; //value oustide a <th> element will show at the top of the table
 		while($row=mysql_fetch_array($res))
 		{
 			$id   		 = $row['id'];
@@ -65,7 +67,7 @@
 
 			//display
 			echo "<tr>
-				<td>$id
+				<!--<td>$id-->
 				<td style=text-align:left><a href='/mbr/device.php?id=$id'>$name</a>
 				<td style='text-align:right;background:$colorSetpoint' title='$date'>$setpoint
 				<td>$unit

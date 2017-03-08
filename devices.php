@@ -27,16 +27,20 @@
 	<link rel=stylesheet href="estils.css">
 	<title><?php 
 		//set title
-		if($type!="")              $title = "<u>$type"."s</u> ";
-		if($ubic!="")              $title = "Devices at <u>$ubic</u>";
-		if($type!="" && $ubic!="") $title = "<u>$type"."s</u> at <u>$ubic</u>";
-		if($type=="" && $ubic=="") $title = "All Devices";
+		if($type!="")              $title = "type=<u>$type</u> ";
+		if($ubic!="")              $title = "ubication=<u>$ubic</u>";
+		if($type!="" && $ubic!="") $title = "type=<u>$type</u> and ubication=<u>$ubic</u>";
+		if($type=="" && $ubic=="") $title = "All";
 		echo preg_replace("/\<\/?u\>/","",$title);
 	?></title>
 	<style>td{text-align:center}</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
-<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>Devices &mdash; Viewing <?php echo $title ?></h2>
+<!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>PLC addresses &mdash; Viewing <?php echo $title ?></h2>
+
+<div>
+	The following PLC addresses are read continuously by the <b>supervisor/timer.py</b> program (if running)
+</div>
 
 <div id=topOptions>
 	<style>
@@ -55,13 +59,13 @@
 
 	<!--NEW DEVICE-->
 	<div class=inline style="border:1px solid blue" id=newDevice onclick=window.location='newDevice.php'>
-		<b> + Create New Device </b>
+		<b> + Add New PLC address</b>
 	</div>
 
 	<!--filter-->
 	<div id=filter class=inline style='border:1px solid #ccc'>
 		<form action=devices.php id=filter>
-			<div class=inline><b>Search filter</b>&emsp;</div>
+			<div class=inline><b>Filter</b>&emsp;</div>
 			<?php 
 				//FIND ALL DIFFERENT DEVICE TYPES AND UBICATIONS
 				$types=[];
@@ -111,10 +115,10 @@
 		</form>
 	</div>
 
-	<!--direct input id-->
+	<!--direct input id
 	<div class=inline style='border:1px solid #ccc;'>
 		<form action=device.php method=GET>
-			View device number 
+			Go to plc address id
 			<input name=id placeholder="id" type=number style="width:40px"
 				value="<?php 
 					echo current(mysql_fetch_assoc(mysql_query("SELECT MIN(id) FROM devices")));
@@ -123,12 +127,13 @@
 			<button>Go</button>
 		</form>
 	</div>
+	-->
 </div>
 
 <!--QUERY & Nº of results-->
 <div style=margin-top:2em><b><?php
 	$res=mysql_query($sql) or die(mysql_error());
-	echo mysql_num_rows($res)." devices found";
+	echo mysql_num_rows($res)." addresses found";
 ?></b></div>
 
 <!--DEVICES-->
@@ -136,7 +141,12 @@
 	<style>
 		#devices {width:80%}
 	</style>
-	<tr><th>Device Id<th>Name<th>Type<th>Ubication<th>Unit<th>PLC Position<th>Readings
+	<tr>
+	<!--<th>Device Id-->
+	<th>Description
+	<th>PLC address
+	<th>Type<th>Ubication<th>Unit
+	<th>Readings
 	<?php
 		while ($row=mysql_fetch_assoc($res))
 		{
@@ -154,12 +164,12 @@
 
 			//display
 			echo "<tr>
-					<td>$id
+					<!--<td>$id-->
 					<td style=text-align:left><a href='device.php?id=$id'>$name</a>
+					<td style=background:$colorPLC>$plcPosition
 					<td>$type
 					<td>$ubication
 					<td>$unit 
-					<td style=background:$colorPLC>$plcPosition
 					<td style=background:$colorRRR>$readings";
 		}
 		if(mysql_num_rows($res)==0)

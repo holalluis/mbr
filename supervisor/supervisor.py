@@ -13,7 +13,7 @@ print "+----------------------------+"
 def connect():
 	''' return 2 connection objects: "opc" and "cursor" '''
 	# PLC
-	plc='Matrikon.OPC.Simulation.1'
+	plc='OMRON.OpenDataServer.1'
 	try:
 		print "+------------+"
 		print "|            | - Connecting to PLC...",

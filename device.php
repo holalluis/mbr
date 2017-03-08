@@ -45,8 +45,13 @@
 		<style>
 			#deviceInfo button {float:right}
 		</style>
-	<tr><th colspan=3 style="text-align:left">Device Information
+	<tr><th colspan=3 style="text-align:left">Information
+	<!--
 	<tr><th align=left>Device Id	<td colspan=2><?php echo $id ?>
+	-->
+	<tr><th align=left>PLC address<td><span field=plcPosition><?php echo $plcP?></span>
+		<td><button onclick=editDevice(<?php echo $id?>,'plcPosition')>Edit</button>
+
 	<tr><th align=left>Type 		<td><span field=type><?php echo "<a href=devices.php?type=$type>$type</a>" ?></span>
 		<td> <button onclick=editDevice(<?php echo $id?>,'type')>Edit</button>
 
@@ -56,13 +61,11 @@
 	<tr><th align=left>Unit			<td><span field=unit><?php echo $unit ?></span>
 		<td><button onclick=editDevice(<?php echo $id?>,'unit')>Edit</button>
 
-	<tr><th align=left>Plc Position	<td><span field=plcPosition><?php echo $plcP?></span>
-		<td><button onclick=editDevice(<?php echo $id?>,'plcPosition')>Edit</button>
 	<!--DELETE DEVICE-->
 	<tr><td colspan=3 style=background:#FA5858>DANGER ZONE
-		<button onclick="if(confirm('Are you sure that you want to delete device id <?php echo $id?>? ALL READINGS FROM THIS DEVICE WILL BE DELETED'))
+		<button onclick="if(confirm('Are you sure that you want to delete address id <?php echo $id?>? ALL READINGS FROM THIS ADDRESS WILL BE DELETED'))
 				window.location='deleteDevice.php?id=<?php echo $id?>'"
-			style="background:red">Delete Device
+			style="background:red">Delete address
 		</button>
 </table>
 

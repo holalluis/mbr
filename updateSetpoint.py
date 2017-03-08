@@ -10,7 +10,7 @@ print "[+] PLC Position:",plcPosition,"<br>"
 print "[+] New Value:",value,"<br>"
 
 #connect to opc
-plc='Matrikon.OPC.Simulation.1'
+plc='OMRON.OpenDataServer.1'
 try:
 	print "[+] Connecting to '"+plc+"' ...",
 	opc=OpenOPC.client()

@@ -7,6 +7,10 @@
 	$id=$_GET['id'];
 	if($id=="")die('No device selected');
 
+	$device=new stdclass;
+	$device->id=$id;
+	//TODO
+
 	//it could be that the device id is submitted but device id does not exist. check this
 	mysql_num_rows(mysql_query("SELECT 1 FROM devices WHERE id=$id")) or die("Device id $id does not exist");
 	
@@ -20,6 +24,9 @@
 	$type=$row['type'];
 	$unit=$row['unit'];
 	$ubic=$row['ubication'];
+
+	//unitless?
+	if($unit==""){$unit="no unit";}
 ?>
 <!doctype html><html><head>
 	<meta charset=utf-8>
@@ -144,6 +151,16 @@
 			echo "<tr><th colspan=3>Last reading: $lastReading";
 		}
 	?>
+	<tr><td colspan=3 style=text-align:center><button onclick=deleteAllReadingsFromDevice(<?php echo $device->id?>)>Delete all readings</button>
+	<script>
+		function deleteAllReadingsFromDevice(id)
+		{
+			if(confirm("Are you sure? This cannot be undone"))
+			{
+				window.location="deleteReadings.php?id="+id
+			}
+		}
+	</script>
 </table><br>
 
 <!--TIME--><?php printf("Page generated in %f seconds",microtime(true)-$start)?>

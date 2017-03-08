@@ -31,7 +31,7 @@
 	$res=mysql_query($sql) or die(mysql_error());
 	$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));
 	$results=mysql_num_rows($res);
-	echo "<h2 onclick=window.location.reload() style=cursor:pointer>Last $results Readings (of $dbSize)</h2>";
+	echo "<h2 onclick=window.location.reload() style=cursor:pointer>Last $results readings inserted (of $dbSize)</h2>";
 ?>
 
 <!--READINGS-->

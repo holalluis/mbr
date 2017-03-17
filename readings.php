@@ -19,9 +19,9 @@
 <?php
 	$sql="
 		SELECT * 
-		FROM devices AS d, (SELECT * FROM readings ORDER BY date DESC) AS r
-		WHERE d.id=r.id_device
-		GROUP BY d.id
+		FROM (SELECT * FROM readings ORDER BY date DESC) AS r,devices 
+		WHERE devices.id=r.id_device
+		GROUP BY r.id_device
 	";
 	$res=mysql_query($sql) or die(mysql_error());
 	$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));
@@ -30,7 +30,7 @@
 
 <!--READINGS-->
 <table cellpadding=4 style=margin-top:2em>
-	<tr><th style=display:none>Id
+	<tr>
 		<th>PLC address
 		<th>Value
 		<th>Unit
@@ -38,7 +38,6 @@
 	<?php
 		while ($row=mysql_fetch_assoc($res))
 		{
-			$id				= $row['id'];
 			$id_device		= $row['id_device'];
 			$date			= $row['date'];
 			$value			= $row['value'];
@@ -53,7 +52,6 @@
 			$value=round($value,4);
 			if($unit==""){$unit="<span style=color:#ccc>no unit</span>";}
 			echo "<tr>
-				<td style=display:none>$id
 				<td><a href=device.php?id=$id_device title='$type, $ubication'>$name</a>
 				<td>$value
 				<td>$unit

@@ -8,6 +8,9 @@
 	<link rel=stylesheet href="estils.css">
 	<style>td{text-align:right}</style>
 	<script src=export.js></script>
+	<style>
+		#navbar div[page=export] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR--><?php include('navbar.php')?>
 <!--TITLE--><h2 onclick=window.location="export.php" style=cursor:pointer>Export Raw Readings to Excel</h2>

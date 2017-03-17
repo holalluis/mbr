@@ -13,6 +13,15 @@
 	<style>
 		#newCalc {border:1px solid blue;cursor:pointer}
 		#newCalc:hover {background:lightgreen;transition:all 0.5s}
+		#navbar div[page=calculations] a {color:black}
+		#newCalc b {
+			height: 40px;
+			font-size: 14px;
+			line-height: 40px;
+			vertical-align: middle;
+			padding: 0.1em 0.5em;
+			margin-right: 0.5em;
+		}
 	</style>
 	<b>+ Create New Calculation</b>
 </div>

@@ -7,38 +7,45 @@
 	<meta charset=utf-8>
 	<title>Readings</title>
 	<link rel=stylesheet href="estils.css">
+	<style>
+		#navbar div[page=readings] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR--><?php include "navbar.php"?>
+
+<h2 onclick=window.location.reload() style=cursor:pointer>Last reading inserted</h2>
 
 <!--TITLE AND QUERY-->
 <?php
 	$limit=10;
 	$sql="SELECT 
-			readings.id, 
-			readings.id_device, 
-			readings.date, 
-			readings.value, 
-			devices.name, 
-			devices.plcPosition, 
-			devices.type,
-			devices.unit, 
-			devices.ubication
-		FROM readings,devices 
-		WHERE readings.id_device=devices.id 
-		ORDER BY date DESC 
-		LIMIT $limit
+			r.id, 
+			r.id_device, 
+			r.date, 
+			r.value, 
+			d.name, 
+			d.plcPosition, 
+			d.type,
+			d.unit, 
+			d.ubication
+		FROM 
+			devices as d, 
+			(SELECT * FROM readings ORDER BY date DESC) as r
+		WHERE r.id_device=d.id 
+		GROUP BY d.id
+		ORDER BY d.id
 	";
 	$res=mysql_query($sql) or die(mysql_error());
 	$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));
 	$results=mysql_num_rows($res);
-	echo "<h2 onclick=window.location.reload() style=cursor:pointer>Last $results readings inserted (of $dbSize)</h2>";
 ?>
 
 <!--READINGS-->
 <table cellpadding=4 style=margin-top:2em>
 	<tr><th style=display:none>Id
 		<th>PLC address
-		<th>Value (Unit)
+		<th>Value
+		<th>Unit
 		<th>When
 	<?php
 		while ($row=mysql_fetch_assoc($res))
@@ -60,7 +67,8 @@
 			echo "<tr>
 				<td style=display:none>$id
 				<td><a href=device.php?id=$id_device title='$type, $ubication'>$name</a>
-				<td>$value ($unit)
+				<td>$value
+				<td>$unit
 				<td title='$date'>$ago
 			";
 		}

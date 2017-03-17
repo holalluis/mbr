@@ -20,7 +20,8 @@
 				FROM readings 
 				GROUP BY id_device
 			) cc ON devices.id=cc.id_device 
-			WHERE $where";
+			WHERE $where
+			";
 ?>
 <!doctype html><html><head>
 	<meta charset=utf-8>
@@ -33,12 +34,15 @@
 		if($type=="" && $ubic=="") $title = "All";
 		echo preg_replace("/\<\/?u\>/","",$title);
 	?></title>
-	<style>td{text-align:center}</style>
+	<style>
+		td{text-align:center}
+		#navbar div[page=devices] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 onclick=window.location.reload() style=cursor:pointer>PLC addresses &mdash; Viewing <?php echo $title ?></h2>
 
-<div>
+<div style=margin-bottom:0.5em>
 	The following PLC addresses are read continuously by the <b>supervisor/timer.py</b> program (if running)
 </div>
 

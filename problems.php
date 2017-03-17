@@ -23,6 +23,9 @@
 		}
 	</script>
 	<style>tr{font-size:16px}</style>
+	<style>
+		#navbar div[page=problems] a {color:black}
+	</style>
 </head><body onload=init()><center>	
 <!--NAVBAR--><?php include"navbar.php"?>
 <!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Data Base Problems</h2>

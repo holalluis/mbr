@@ -32,6 +32,9 @@
 	<meta charset=utf-8>
 	<title>Information</title>
 	<link rel=stylesheet href="estils.css">
+	<style>
+		#navbar div[page=devices] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 style=cursor:pointer onclick="window.location='<?php echo "device.php?id=$id"?>'"><?php echo $name?></h2>

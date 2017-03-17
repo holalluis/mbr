@@ -6,6 +6,9 @@
 	<title>Update Setpoints</title>
 	<link rel=stylesheet href="estils.css">
 	<style>td{text-align:center}</style>
+	<style>
+		#navbar div[page=setpoints] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR-->	<?php include("navbar.php") ?>
 <!--TITLE-->	<h2 onclick=window.location='setpoints.php' style=cursor:pointer>Update PLC Setpoints</h2>

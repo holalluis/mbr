@@ -6,6 +6,9 @@
 	<meta charset=utf-8>
 	<title>Offline</title>
 	<link rel=stylesheet href="estils.css">
+	<style>
+		#navbar div[page=offline] a {color:black}
+	</style>
 </head><body><center>
 <!--NAVBAR--><?php include"navbar.php"?>
 <!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>Offline Records</h2>

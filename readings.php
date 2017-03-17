@@ -17,23 +17,11 @@
 
 <!--TITLE AND QUERY-->
 <?php
-	$limit=10;
-	$sql="SELECT 
-			r.id, 
-			r.id_device, 
-			r.date, 
-			r.value, 
-			d.name, 
-			d.plcPosition, 
-			d.type,
-			d.unit, 
-			d.ubication
-		FROM 
-			devices as d, 
-			(SELECT * FROM readings ORDER BY date DESC) as r
-		WHERE r.id_device=d.id 
+	$sql="
+		SELECT * 
+		FROM devices AS d, (SELECT * FROM readings ORDER BY date DESC) AS r
+		WHERE d.id=r.id_device
 		GROUP BY d.id
-		ORDER BY d.id
 	";
 	$res=mysql_query($sql) or die(mysql_error());
 	$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));

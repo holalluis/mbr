@@ -60,10 +60,7 @@
 			{
 				echo "<tr><td colspan=7>~No readings inserted yet";
 			}
-			$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings")));
-			$results=mysql_num_rows($res);
 		?>
-	<tr><th colspan=7>[...<?php echo ($dbSize-$results)." more"?>...]
 </table>
 
 <!--TIME--><?php printf("Page generated in %f seconds",microtime(true)-$start)?>

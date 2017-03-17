@@ -18,14 +18,13 @@
 	#navbar {
 		background:#efefef;
 		border-bottom:1px solid #ccc;
-		height:50px;
 		padding-left:30px;
 		text-shadow: 0 1px 0 #fff;
 	}
 	#navbar div {
 		cursor:pointer;
 		display:inline-block;
-		padding:1em 0.5em 1em 0.5em;
+		padding:1em 0.5em;
 	}
 	#navbar div:hover {
 		background:#ccc;	

@@ -1,4 +1,7 @@
 <?php 
+	//refresh each 10 seconds
+	header("refresh: 10");
+
 	$start = microtime(true); //start time
 	include "mysql.php";
 	include "timeAgo.php";

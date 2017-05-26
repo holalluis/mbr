@@ -4,6 +4,7 @@
 import os
 import time
 import supervisor
+import sys
 
 #set sample time (seconds)
 sampleTime=10 
@@ -37,6 +38,6 @@ while True:
 
     i=i+1;
 
-    if i==10: 
+    if i==5: 
         os.system(clear); 
         i=0;

@@ -33,9 +33,9 @@
 <?php
 	include 'calculations_library.php'; //to use idsPerFormula()
 	$sql="SELECT * FROM calculations";
-	$res=mysql_query($sql) or die(mysql_error());
-	echo "<b>".mysql_num_rows($res)." calculations found</b>";
-	while($row=mysql_fetch_array($res))
+	$res=$mysqli->query($sql) or die($mysqli->error());
+	echo "<b>".$res->num_rows." calculations found</b>";
+	while($row=$res->fetch_array())
 	{
 		$id			= $row['id'];
 		$name		= $row['name'];
@@ -53,7 +53,7 @@
 							style='background:red'>
 							Delete Calculation</button>";
 	}
-	if(mysql_num_rows($res)==0)
+	if($res->num_rows==0)
 	{
 		echo "<tr style=color:#666><td colspan=5>~No calculations created yet";
 	}

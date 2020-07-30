@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* EDIT a device from devices */
 include("mysql.php");
 
@@ -11,22 +11,22 @@ $unit=isset($_GET['unit'])        ? "'".$_GET['unit']."'"        : 'unit';      
 $ubic=isset($_GET['ubication'])   ? "'".$_GET['ubication']."'"   : 'ubication';   //optional
 
 //command edit device
-$sql="UPDATE devices SET 
+$sql="UPDATE devices SET
 		name=$name,
 		plcPosition=$plcP,
 		type=$type,
 		unit=$unit,
 		ubication=$ubic
 	WHERE id=$id";
-mysql_query($sql) or die(mysql_error());
+$mysqli->query($sql) or die($mysqli->error());
 
-?>	
-<!doctype html><html><head> 
+?>
+<!doctype html><html><head>
 	<meta charset=utf-8>
 	<link rel=stylesheet href=estils.css>
-</head><body><center>	
+</head><body><center>
 <!--NAVBAR--><?php include("navbar.php")?>
-<?php 
+<?php
 	echo("<div><b style=color:lightgreen>Device id $id edited correctly</b></div>");
 	header("Location: device.php?id=$id");
 ?>

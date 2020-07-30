@@ -3,7 +3,7 @@
 import supervisor
 
 #create opc (plc) and cursor (mysql) connection objects
-[opc,cursor]=supervisor.connect() 	
+[opc,cursor]=supervisor.connect()
 
 #read mysql db and show devices table
 sql="SELECT * FROM devices LIMIT 10"

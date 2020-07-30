@@ -12,11 +12,11 @@
 	//TODO
 
 	//it could be that the device id is submitted but device id does not exist. check this
-	mysql_num_rows(mysql_query("SELECT 1 FROM devices WHERE id=$id")) or die("Device id $id does not exist");
-	
+  $mysqli->query("SELECT 1 FROM devices WHERE id=$id")->num_rows or die("Device id $id does not exist");
+
 	//query
-	$res=mysql_query("SELECT * FROM devices WHERE id=$id") or die(mysql_error());
-	$row=mysql_fetch_assoc($res);
+	$res=$mysqli->query("SELECT * FROM devices WHERE id=$id") or die($mysqli->error());
+	$row=$res->fetch_assoc();
 
 	//process query
 	$name=$row['name'];
@@ -86,7 +86,7 @@
 	</style>
 	<?php
 		//get size of whole database for this device
-		$dbSize=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM readings WHERE id_device=$id")));
+		$dbSize=current($mysqli->query("SELECT COUNT(*) FROM readings WHERE id_device=$id")->fetch_array());
 
 		//date filter in sql query depending on get parameters in url
 		if(isset($_GET['from']) && isset($_GET['to']))
@@ -102,15 +102,15 @@
 		$limit = $dateFilter=="" ? "LIMIT 10" : "LIMIT 500";
 
 		//final sql query
-		$sql="	SELECT * FROM 
+		$sql="	SELECT * FROM
 				(
-					SELECT * FROM readings WHERE id_device=$id $dateFilter ORDER BY date DESC $limit 
+					SELECT * FROM readings WHERE id_device=$id $dateFilter ORDER BY date DESC $limit
 				) 	alias
 				ORDER BY date ASC";
-		$res=mysql_query($sql) or die('error in query');
+		$res=$mysqli->query($sql) or die('error in query');
 
 		//how many readings
-		$results=mysql_num_rows($res);
+		$results=$res->num_rows;
 
 	?>
 	<tr><th colspan=3 style=font-size:18px>
@@ -122,7 +122,7 @@
 					<input name=id type=hidden value="<?php echo $id?>">
 			From 	<input name=from type=date size=3 value="2000-01-01">
 			To		<input name=to 	 type=date size=3 value="<?php echo date("Y-m-d",time()+86400)?>">
-					<button type=submit>View</button>	
+					<button type=submit>View</button>
 		</form>
 
 	<!--selected data header-->
@@ -137,8 +137,8 @@
 
 	<!--results-->
 	<?php
-		if(mysql_num_rows($res)==0)echo "<tr><td colspan=2 style=background:#ccc align=center>No readings";
-		while($row=mysql_fetch_array($res))
+		if($res->num_rows==0)echo "<tr><td colspan=2 style=background:#ccc align=center>No readings";
+		while($row=$res->fetch_array())
 		{
 			$date  = $row['date'];
 			$value = $row['value'];

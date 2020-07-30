@@ -10,7 +10,7 @@ $value     = $_POST['value'];
 
 //sql query
 $sql="INSERT INTO readings (id_device,date,value) VALUES ($id_device,'$date $time',$value)";
-mysql_query($sql) or die(mysql_error());
+$mysqli->query($sql) or die($mysqli->error());
 
 //go back
 header("Location: device.php?id=$id_device");

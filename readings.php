@@ -36,8 +36,8 @@
 				WHERE devices.id=r.id_device
 				GROUP BY r.id_device
 			";
-			$res=mysql_query($sql) or die(mysql_error());
-			while($row=mysql_fetch_assoc($res))
+			$res=$mysqli->query($sql) or die($mysqli->error());
+			while($row=$res->fetch_assoc())
 			{
 				$id_device		= $row['id_device'];
 				$date			= $row['date'];
@@ -59,7 +59,7 @@
 					<td title='$date'>$ago
 				";
 			}
-			if(mysql_num_rows($res)==0)
+			if($res->num_rows==0)
 			{
 				echo "<tr><td colspan=7>~No readings inserted yet";
 			}

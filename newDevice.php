@@ -49,24 +49,24 @@
 		die();
 
 	//process input
-	$name=mysql_real_escape_string($_POST['name']);
-	$type=mysql_real_escape_string($_POST['type']);
-	$ubic=mysql_real_escape_string($_POST['ubication']);
-	$unit=mysql_real_escape_string($_POST['unit']);
-	$plcP=mysql_real_escape_string($_POST['plcPosition']);
+	$name=$mysqli->real_escape_string($_POST['name']);
+	$type=$mysqli->real_escape_string($_POST['type']);
+	$ubic=$mysqli->real_escape_string($_POST['ubication']);
+	$unit=$mysqli->real_escape_string($_POST['unit']);
+	$plcP=$mysqli->real_escape_string($_POST['plcPosition']);
 
 	//check for duplicates in name and plcPosition
-	$duplicates=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM devices WHERE name='$name'")));
+	$duplicates=current($mysqli->query("SELECT COUNT(*) FROM devices WHERE name='$name'")->fetch_array());
 	if($duplicates>0)die("ERROR! This device name already exists!");
-	$duplicates=current(mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM devices WHERE plcPosition='$plcP'")));
+	$duplicates=current($mysqli->query("SELECT COUNT(*) FROM devices WHERE plcPosition='$plcP'")->fetch_array());
 	if($duplicates>0)die("ERROR! This device's PLC Position already exists!");
 
 	//all is ok, let's insert new device
 	$sql="INSERT INTO devices (name,type,ubication,unit,plcPosition) VALUES ('$name','$type','$ubic','$unit','$plcP')";
-	mysql_query($sql) or die(mysql_error());
+	$mysqli->query($sql) or die($mysqli->error());
 
 	//success & go to new device
 	echo "<b>New Device '$name' Inserted Correctly!</b> ";
-	$id=current(mysql_fetch_array(mysql_query("SELECT MAX(id) FROM devices")));
+	$id=current($mysqli->query("SELECT MAX(id) FROM devices")->fetch_array());
 	echo "<a href=device.php?id=$id>View it</a>";
 ?>

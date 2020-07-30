@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include("mysql.php");
 	$start = microtime(true); //start time
 ?>
@@ -26,7 +26,7 @@
 <?php
 	if(!isset($_POST['query'])) die();
 
-	//input: query 
+	//input: query
 	$sql=$_POST['query'];
 
 	//query does not allow delete commands
@@ -35,11 +35,11 @@
 
 <!--QUERY-->
 <div><b><?php
-	$res=mysql_query($sql) or die(mysql_error());
+	$res=$mysqli->query($sql) or die($mysqli->error());
 	//in case that the query is an UPDATE
-	if(strpos(strtoupper($sql),'UPDATE')!==false) 
-		die("Registers affected: ".mysql_affected_rows());
-	echo mysql_num_rows($res)." results";
+	if(strpos(strtoupper($sql),'UPDATE')!==false)
+		die("Registers affected: ".$res->affected_rows());
+	echo $res->num_rows." results";
 ?></b></div>
 
 <!--result-->
@@ -47,7 +47,7 @@
 <?php
 	//PROCESS QUERY RESULT ($res)
 	$i=0;
-	while($row=mysql_fetch_array($res))
+	while($row=$res->fetch_array())
 	{
 		if($i==0) //Headers
 		{

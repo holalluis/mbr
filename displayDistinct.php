@@ -5,9 +5,10 @@
 function displayDistinct($field)
 /* display different existing values from fields in devices table */
 {
+  global $mysqli;
 	$options=[]; //Already existing options
-	$res=mysql_query("SELECT DISTINCT($field) FROM devices") or die(mysql_error());
-	while($row=mysql_fetch_array($res)) 
+	$res=$mysqli->query("SELECT DISTINCT($field) FROM devices") or die($mysqli->error());
+	while($row=$res->fetch_array()) 
 	{
 		if($row["$field"]=='')continue;
 		$options[]="<b onclick=document.getElementsByName('$field')[0].value=this.textContent style=cursor:pointer>".$row["$field"]."</b>";

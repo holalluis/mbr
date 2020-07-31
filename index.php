@@ -17,17 +17,6 @@
   <b> Project under development. Version 0.1 </b>
 </div>
 
-<!--PLANT PICTURE-->
-<div class=inline style=max-width:49%>
-  <div>
-    Image C:\xampp\htdocs\mbr\img\Plant.png
-  </div>
-
-  <a href="img/Plant.png" style=cursor:zoom-in>
-    <img src="img/Plant.png" alt="Pilot plant" width=600px>
-  </a>
-</div>
-
 <!--DB SIZE TABLE-->
 <div class=inline style=max-width:49%>
   <table cellpadding=3>

@@ -75,7 +75,8 @@
 	<tr><td colspan=3 style=background:#FA5858>DANGER ZONE
 		<button onclick="if(confirm('Are you sure that you want to delete address id <?php echo $id?>? ALL READINGS FROM THIS ADDRESS WILL BE DELETED'))
 				window.location='deleteDevice.php?id=<?php echo $id?>'"
-			style="background:red">Delete address
+			style="background:red">
+        Delete device
 		</button>
 </table>
 

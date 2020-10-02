@@ -10,7 +10,7 @@
 <!--TITLE--><h2 onclick=window.location.reload() style=cursor:pointer>About</h2>
 
 <pre style="border:0px solid #ccc;max-width:60%;padding:1em">
-MBR-PLC WEB platform (name?), written in PHP/MySQL by Lluís Bosch &amp; Marc Céspedes
+MBR-PLC WEB platform (name?), written in PHP/MySQL/HTML/CSS/Javascript languages by Lluís Bosch &amp; Marc Céspedes
 
 Contact: lbosch@icra.cat
 

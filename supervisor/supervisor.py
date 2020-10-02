@@ -1,5 +1,5 @@
-''' 
-	SuperVisor Library 
+'''
+	SuperVisor Library
 	Module to retrieve data from a PLC and store records to a MySQL DataBase
 '''
 import OpenOPC
@@ -22,7 +22,7 @@ def connect():
 		print "		Success!"
 	except:
 		print "Error connecting to OPC"
-			
+
 	print "| Connecting |"
 
 	# MYSQL
@@ -77,9 +77,9 @@ def readPLC(opc,devices):
 	for device in devices: plcPositions.append(device[2])	# plcPosition is column num 2
 	#read plc
 	results=opc.read(plcPositions)
-	if(results): 
+	if(results):
 		print "		Reading PLC:		%s values read" % (len(results))
-	else: 
+	else:
 		print "		No results!"
 
 	return results
@@ -92,9 +92,9 @@ def storeResults(cursor,results):
 	'''
 	for result in results: # result is (plcPosition,value,quality,date)
 		plcPosition	= result[0]
-		value		= result[1]
-		quality		= result[2] #not used
-		date		= result[3] #not used
+		value		    = result[1]
+		quality		  = result[2] #not used
+		date		    = result[3] #not used
 
 		#if value is None, means error
 		if(value==None): value=random.random() #TODO

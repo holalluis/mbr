@@ -4,4 +4,4 @@ user='root'
 pasw=''
 dbName='mbr'
 db=MySQLdb.connect(server,user,pasw,dbName)
-cursor = db.cursor()
+cursor=db.cursor()

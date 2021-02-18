@@ -6,6 +6,12 @@ import OpenOPC
 import pymysql
 import random # to simulate readings
 
+'''
+
+TEST TO MARXDAMAN
+
+'''
+
 print("+----------------------------+")
 print("| S U P E R V I S O R - v0.1 |")
 print("+----------------------------+")

@@ -3,7 +3,7 @@
 	Module to retrieve data from a PLC and store records to a MySQL DataBase
 '''
 import OpenOPC
-import pymysql
+import MySQLdb
 import random # to simulate readings
 
 print("+----------------------------+")
@@ -32,7 +32,7 @@ def connect():
 	dbName = 'mbr'
 	try:
 		print("|            | - Connecting to MySQL..."),
-		db=pymysql.connect(server,user,pasw,dbName)
+		db=MySQLdb.connect(server,user,pasw,dbName)
 		cursor = db.cursor()
 		print("	Success!")
 	except:

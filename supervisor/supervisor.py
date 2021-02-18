@@ -7,8 +7,7 @@ import pymysql
 import random # to simulate readings
 
 '''
-
-TEST TO MARXDAMAN
+asdfgjdgfhdfhgjdghjdfghjdfg
 
 '''
 

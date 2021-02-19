@@ -2,9 +2,9 @@
 	SuperVisor Library
 	Module to retrieve data from a PLC and store records to a MySQL DataBase
 """
-import OpenOPC-Python3x
+import OpenOPC
 import pymysql
-import random # to simulate readings
+import random  # to simulate readings
 
 
 print("+----------------------------+")
@@ -39,7 +39,7 @@ def connect():
 		db = pymysql.connect(server, user, pasw, dbName)
 		cursor = db.cursor()
 		print("	Success!")
-	except:
+	except :
 		print("Error connecting to MySQL")
 
 	print("+------------+")
@@ -65,13 +65,13 @@ def getDevices(cursor,deviceTypes):
 	typeFilter = str(deviceTypes).replace('[','(').replace(']',')')
 
 	# MySQL Query
-	sql = "SELECT * FROM devices WHERE type in %s AND plcPosition!=''" % (typeFilter)
+	sql = f"SELECT * FROM devices WHERE type in {typeFilter} AND plcPosition!=''"
 	queryResult = cursor.execute(sql)
 	devices = cursor.fetchall()
 
 	# display info
 	print("	[+] Getting PLC adresses from %s" % (', '.join([str(d)+'s' for d in deviceTypes])))  #ugly line that transforms deviceTypes to make it look good
-	print("		Found %s addresses" % (queryResult))
+	print(f"		Found {queryResult} addresses")
 
 	return devices
 
@@ -89,7 +89,7 @@ def readPLC(opc,devices):
 	# read plc
 	results = opc.read(plcPositions)
 	if results:
-		print("		Reading PLC:		%s values read" % (len(results)))
+		print(f"		Reading PLC:		{len(results)} values read")
 	else:
 		print("		No results!")
 
@@ -103,24 +103,24 @@ def storeResults(cursor,results):
 			results: list of results (from readPLC())
 	"""
 	for result in results:  # result is (plcPosition,value,quality,date)
-		plcPosition = result[0]
-		value		    = result[1]
-		quality		  = result[2]  # not used
+		plcPosition     = result[0]
+		value		    = result[1] # fixme
+		quality 	  	= result[2]  # not used
 		date		    = result[3]  # not used
 
 		# if value is None, means error
 		if value is None:
-			value = random.random() # TODO
+			value = random.random()  # todo
 
 		# find device id
-		sql = "SELECT id FROM devices WHERE plcPosition= {} " .format(plcPosition)
+		sql = f"SELECT id FROM devices WHERE plcPosition= {plcPosition} "
 		cursor.execute(sql)
 		id_device = cursor.fetchall()[0][0]
 
 		# insert new reading
-		sql = "INSERT INTO readings (id_device,value) VALUES (%s,%s); " % (id_device, value)
+		sql = f"INSERT INTO readings (id_device,value) VALUES ({id_device},{value}); "
 		queryResult = cursor.execute(sql)
 		if not queryResult:
 			print("ERROR! value not inserted")
 
-	print("		Storing to MySQL: 	%s readings inserted" % (len(results)))
+	print(f"		Storing to MySQL: {len(results)} readings inserted")

@@ -30,13 +30,13 @@ while True:
 
         break
 
-    print(" === New Reading: %s" % (time.asctime()))  # display time
+    print(f" === New Reading: {time.asctime()}")  # display time
 
     # iterate device types that we want to store
     deviceTypes = ['Sensor','Alarm','Equipment','Setpoint']
     supervisor.readAndStore(cursor,opc,deviceTypes)
 
-    print(" [+] Sleeping %s seconds...\n\n" % (sampleTime))
+    print(f" [+] Sleeping {sampleTime} seconds...\n\n")
     time.sleep(sampleTime)
 
     i = i+1

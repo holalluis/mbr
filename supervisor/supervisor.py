@@ -23,11 +23,9 @@ def connect():
 		print("- Connecting to PLC...")
 		opc = OpenOPC.client()
 		opc.connect(plc)
-		print("		Success!")
+		print(" Success!")
 	except:
 		print("Error connecting to OPC")
-
-	print("| Connecting |")
 
 	# MYSQL
 	server = '127.0.0.1'
@@ -35,7 +33,7 @@ def connect():
 	pasw = ''
 	dbName = 'mbr'
 	try:
-		print("|            | - Connecting to MySQL..."),
+		print("| - Connecting to MySQL... | "),
 		db = pymysql.connect(server, user, pasw, dbName)
 		cursor = db.cursor()
 		print("	Success!")
@@ -57,7 +55,7 @@ def readAndStore(cursor,opc,deviceTypes):
 
 def getDevices(cursor,deviceTypes):
 	""" return a list of devices of the specified type
-			cursor: 		mysql connection object
+				cursor: 	mysql connection object
 			deviceTypes: 	array of types (strings) e.g. ('Sensor','Equipment','Alarm')
 	"""
 
@@ -70,8 +68,10 @@ def getDevices(cursor,deviceTypes):
 	devices = cursor.fetchall()
 
 	# display info
-	print("	[+] Getting PLC adresses from %s" % (', '.join([str(d)+'s' for d in deviceTypes])))  #ugly line that transforms deviceTypes to make it look good
-	print(f"		Found {queryResult} addresses")
+	print(f"	[+] Getting PLC addresses from  {', '.join([str(d)+'s' for d in deviceTypes])}")
+	# ugly line that transforms deviceTypes to make it look good (merges devices from deviceTypes with a (,))
+
+	print(f"Found {queryResult} addresses")
 
 	return devices
 
@@ -104,7 +104,7 @@ def storeResults(cursor,results):
 	"""
 	for result in results:  # result is (plcPosition,value,quality,date)
 		plcPosition     = result[0]
-		value		    = result[1] # fixme
+		value		    = result[1]
 		quality 	  	= result[2]  # not used
 		date		    = result[3]  # not used
 

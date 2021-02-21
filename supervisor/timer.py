@@ -10,11 +10,14 @@ import sys
 sampleTime = 10
 
 # connect to plc and mysql
-[opc,cursor] = supervisor.connect()
+try:
+    [opc,cursor] = supervisor.connect()
+except:
+    print("Error Values not loaded from Supervisor")
 
-print("+------------------------+")
+print("+----------------+")
 print(f"| Recording PLC to MySQL | Sample Time: {sampleTime} seconds")
-print("+------------------------+")
+print("+----------------+")
 
 if sys.platform.find('win') == 0:
     clear = 'cls'
@@ -24,11 +27,10 @@ else:
 i = 0
 while True:
 
-    opcState = opc.ping()  # check connection
-    if not opcState:
+    try:
+        opcState = opc.ping()  # check connection
+    except type(opcState) != int or type(opcState) != float:
         print(' [!] ERROR not connected to PLC. Exiting...')
-
-        break
 
     print(f" === New Reading: {time.asctime()}")  # display time
 

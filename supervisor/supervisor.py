@@ -104,9 +104,9 @@ def storeResults(cursor,results):
 	"""
 	for result in results:  # result is (plcPosition,value,quality,date)
 		plcPosition     = result[0]
-		value		    = result[1]
-		quality 	  	= result[2]  # not used
-		date		    = result[3]  # not used
+		value		= result[1]
+		quality	  	= result[2]  # not used
+		date		= result[3]  # not used
 
 		# if value is None, means error
 		if value is None:

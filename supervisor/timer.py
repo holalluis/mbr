@@ -7,6 +7,7 @@ import supervisor
 import sys
 
 # set sample time (seconds)
+
 sampleTime = 10
 
 # connect to plc and mysql

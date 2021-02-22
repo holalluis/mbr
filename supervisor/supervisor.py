@@ -103,7 +103,7 @@ def storeResults(cursor,results):
 			results: list of results (from readPLC())
 	"""
 	for result in results:  # result is (plcPosition,value,quality,date)
-		plcPosition     = result[0]
+		plcPosition = result[0]
 		value		= result[1]
 		quality	  	= result[2]  # not used
 		date		= result[3]  # not used

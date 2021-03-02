@@ -5,6 +5,7 @@ import os
 import time
 import supervisor
 import sys
+import datetime
 
 # set sample time (seconds)
 
@@ -47,3 +48,6 @@ while True:
     if i == 5:
         os.system(clear)
         i = 0
+
+# Make sure data is committed to the database
+        cnx.commit()

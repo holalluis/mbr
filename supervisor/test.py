@@ -4,12 +4,38 @@
 """
 import mysql.connector
 from mysql.connector import errorcode
-
+import pymysql
 
 print("+----------------------------+")
 print("| S U P E R V I S O R - v0.2 |")
 print("+----------------------------+")
 
+def connect():
+    """
+    return 2 connection objects: "opc" and "cursor"
+    """
+    # PLC
+    plc = 'OMRON.OpenDataServer.1'
+
+    # MYSQL
+    server = '127.0.0.1'
+    user = 'root'
+    pasw = ''
+    dbName = 'test'
+    try:
+        print("| - Connecting to MySQL... | "),
+        db = pymysql.connect(server, user, pasw, dbName)
+        cursor = db.cursor()
+        print("	Success!")
+    except:
+        print("Error connecting to MySQL")
+
+    print("+------------+")
+    return [cursor]
+
+connect()
+
+'''
 
 def connect():
  """
@@ -34,6 +60,7 @@ def connect():
 
      cursor = mysql.connector.connect(**config)
      return [cursor]
+
  except mysql.connector.Error as err:
      if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
          print("Something is wrong with your user name or password")
@@ -42,12 +69,9 @@ def connect():
      else:
          print(err)
 
-
-   [cursor]=connect()
-   print(cursor)
+connect()
 
 
-'''
 
 
 def readAndStore(cursor,opc,deviceTypes):
